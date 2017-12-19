@@ -9,7 +9,7 @@ Preinstall:
  
  ```sh
  
- $ git clone https://github.com/dimaxweb/protractor-fullstack
+ $ git clone https://github.com/yuristsepaniuk/protractor-fullstack.git
  
  $ cd example
  
