@@ -13,43 +13,11 @@ describe('Home page tests', function() {
 
         homePage.go();
 
-        var elementsToBeDisplayed  = ["header","footer","mainContainer","navigationBar"];
-
-        elementsToBeDisplayed.forEach(function(elementName){
-           var elem =  homePage[elementName];
-           expect(elem.isDisplayed()).toBeTruthy();
-
-        });
-
-
+        var filePathAbsolute  =  path.join(__dirname, "data/uploadExample.txt");
+        console.log(filePathAbsolute);
+        var fileInput  = element(by.css("#fileUploadInput"));
+        fileInput.sendKeys(filePathAbsolute);
+        browser.sleep(6000);
     });
 
-    it("Navigation tests",function() {
-
-        homePage.navigationLinks.then(function(links) {
-            expect(links.length).toBeGreaterThan(0);
-        });
-
-
-
-    });
-
-    it("Other pages menu is available",function(){
-
-        homePage.openMenu();
-
-        var moreLinksContainer = homePage.moreLinksContainer;
-        expect(moreLinksContainer.isDisplayed()).toBeTruthy();
-
-        browser.debugger();
-    });
-
-
-
-
-
-
-
-
-
-    });
+});

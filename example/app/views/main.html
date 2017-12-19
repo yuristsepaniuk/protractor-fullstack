@@ -113,7 +113,29 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
     </div>
     <div class="col-md-4">
-      <input type="file" id="fileUploadInput" />
+      <input type="file" id="fileUploadInput"/>
+      <script>
+        document.getElementById("fileUploadInput").addEventListener('change', function() {
+          var self = this;
+          const formData = new FormData();
+          formData.append('file', self.files[0], self.files[0].name);
+
+
+          var http = new XMLHttpRequest();
+          var url = "/test";
+          http.open("POST", url, true);
+
+          //Send the proper header information along with the request
+          http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+          http.onreadystatechange = function() {//Call a function when the state changes.
+              if(http.readyState == 4 && http.status == 200) {
+                  alert(http.responseText);
+              }
+          }
+          http.send(formData);
+        });
+      </script>
       <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
     </div>
   </div>
